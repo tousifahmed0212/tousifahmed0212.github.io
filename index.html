@@ -447,24 +447,21 @@
       position: relative;
       overflow: hidden;
     }
-
-    .image-placeholder {
-      width: 100%;
-      max-width: min(400px, 40vw);
-      aspect-ratio: 1/1;
-      background: #e6ecfe;
-      border-radius: 30px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 20px 30px -10px rgba(74, 108, 247, 0.15);
-      border: 2px dashed #4a6cf7;
-      color: #4a6cf7;
-      font-size: 1.2rem;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      transform-origin: center;
-      will-change: transform;
+    
+.image-placeholder {
+  width: 100%;
+  max-width: min(400px, 40vw);
+  aspect-ratio: 1/1;
+  border-radius: 30px;
+  overflow: hidden;              /* ✅ important: crop image to rounded corners */
+  background: #e6ecfe;
+  box-shadow: 0 20px 30px -10px rgba(74, 108, 247, 0.15);
+  border: 2px solid rgba(74, 108, 247, 0.25); /* cleaner than dashed */
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transform-origin: center;
+  will-change: transform;
+  display: flex;                 /* keeps image centered */
+  
     }
 
     .image-placeholder i {
@@ -605,12 +602,12 @@
         border-bottom: 3px solid #4a6cf7;
       }
     }
-    .profile-photo{
+.profile-photo {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  border-radius: 28px; /* close to your 30px look */
+  object-fit: cover;   /* ✅ fills box without stretching */
   display: block;
+  border-radius: 0;    /* container already has rounding */
 }
   </style>
 </head>
